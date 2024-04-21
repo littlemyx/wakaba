@@ -1,0 +1,12 @@
+{{#section 'head'}}
+<title>JB@ch - {{ boardName }}</title>
+{{/section}}
+
+<div>
+  <h1>{{ boardName }}</h1>
+  {{#each threads}}
+  <div class="thread">
+    {{> thread id=id title=title board=boardId}}
+  </div>
+  {{/each}}
+</div>

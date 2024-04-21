@@ -1,0 +1,23 @@
+{{#section 'head'}}
+<title>JB@ch</title>
+{{/section}}
+
+<div hx-target="this" hx-swap="outerHTML">
+  <div><label>First Name</label>: Joe</div>
+  <div><label>Last Name</label>: Blow</div>
+  <div><label>Email</label>: joe@blow.com</div>
+  <div>
+    <p>{{ text }}</p>
+  </div>
+  <button hx-get="/components/form" class="btn btn-primary">
+    Click To Edit
+  </button>
+</div>
+
+<div>
+  {{#each boards}}
+  <div class="board">
+    {{> board text=name url=shortName}}
+  </div>
+  {{/each}}
+</div>

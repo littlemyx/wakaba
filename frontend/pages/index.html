@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.12"
+      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+      crossorigin="anonymous"
+    ></script>
+    <title>My App</title>
+  </head>
+  <body>
+    <h1>My App</h1>
+    <p>Welcome to my app!</p>
+    <div hx-target="this" hx-swap="outerHTML">
+      <div><label>First Name</label>: Joe</div>
+      <div><label>Last Name</label>: Blow</div>
+      <div><label>Email</label>: joe@blow.com</div>
+      <button hx-get="http://127.0.0.1:3000/contact" class="btn btn-primary">
+        Click To Edit
+      </button>
+    </div>
+  </body>
+</html>

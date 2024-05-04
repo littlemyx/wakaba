@@ -14,6 +14,10 @@ app.engine(
         this._sections[name] = options.fn(this);
         return null;
       },
+      formatDate: function (date) {
+        console.log(date);
+        return new Date(date).toLocaleString();
+      },
     },
   })
 );
@@ -41,7 +45,24 @@ app.get("/board/:boardId", async (req, res) => {
   console.log(response);
   const { boardName, threads } = await response.json();
   console.log(`threads: ${threads}`);
-  res.render(`pages/board`, { threads, boardId, boardName });
+  res.render(`pages/board`, {
+    threads,
+    boardId,
+    boardName,
+  });
+});
+
+app.get("/board/:boardId/thread/:threadId", async (req, res) => {
+  const { boardId, threadId } = req.params;
+  console.log(boardId, threadId);
+  const response = await fetch(`http://localhost:3001/thread/${threadId}`);
+  const { title, posts } = await response.json();
+  res.render(`pages/thread`, {
+    title,
+    posts,
+    boardId,
+    threadId,
+  });
 });
 
 app.get("/:slug", (req, res) => {
